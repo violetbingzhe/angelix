@@ -46,6 +46,10 @@ class Localizer:
         computes config['suspicious']/config['group_size'] groups
         each consisting of config['group_size'] suspicious expressions
         '''
+        logger.info("All positive")
+        logger.info(all_positive)
+        logger.info("All negative")
+        logger.info(all_negative)
 
         group_size = self.config['group_size']
         suspicious = self.config['suspicious']
@@ -82,6 +86,11 @@ class Localizer:
         for _, trace in negative:
             all |= set(trace)
 
+        logger.info("positive")
+        logger.info(positive)
+        logger.info("negative")
+        logger.info(negative)
+
         # update suspcious
         if self.config['localize_only']:
             suspicious = len(all)
@@ -112,6 +121,10 @@ class Localizer:
         if self.lines is not None:
             filtered = filter(is_selected, all)
             all = list(filtered)
+
+
+        logger.info("all")
+        logger.info(all)
 
         for e in all:
             try:
